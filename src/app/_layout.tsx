@@ -1,11 +1,11 @@
 import '~/global.css';
 
 import {
-Inter_400Regular,
-Inter_600SemiBold,
-Inter_700Bold,
+Roboto_400Regular,
+Roboto_500Medium,
+Roboto_700Bold,
 useFonts,
-} from '@expo-google-fonts/inter';
+} from '@expo-google-fonts/roboto';
 import { Stack } from 'expo-router';
 import * as SplashScreen from 'expo-splash-screen';
 import { useEffect } from 'react';
@@ -15,9 +15,9 @@ SplashScreen.preventAutoHideAsync();
 
 export default function RootLayout() {
    const [loaded, error] = useFonts({
-     Inter_400Regular,
-     Inter_600SemiBold,
-     Inter_700Bold,
+Roboto_400Regular,
+Roboto_500Medium,
+Roboto_700Bold,
     });
     useEffect(() => {
       if (loaded || error) {

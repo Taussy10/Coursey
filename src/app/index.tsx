@@ -3,8 +3,8 @@ import React from 'react'
 
 const Index = () => {
   return (
-    <View className=''>
-      <Text className=' text-xl font-iRegular'>Index</Text>
+    <View className='  flex-1 px-4  bg-green-500'>
+      <Text className=' text-xl font-rSemibold'>Indexss</Text>
     </View>
   )
 }

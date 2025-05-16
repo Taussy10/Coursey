@@ -12,13 +12,14 @@
     "web": "expo start --web"
   },
   "dependencies": {
-    "@expo-google-fonts/inter": "^0.3.0",
+    "@expo-google-fonts/roboto": "^0.3.0",
     "@expo/vector-icons": "^14.0.0",
     "@react-navigation/native": "^7.0.3",
     "expo": "^53.0.9",
     "expo-constants": "~17.1.4",
     "expo-linking": "~7.1.4",
     "expo-router": "~5.0.3",
+    "expo-splash-screen": "~0.30.8",
     "expo-status-bar": "~2.2.3",
     "expo-system-ui": "~5.0.6",
     "expo-web-browser": "~14.1.6",
@@ -30,8 +31,7 @@
     "react-native-reanimated": "~3.17.4",
     "react-native-safe-area-context": "5.4.0",
     "react-native-screens": "~4.10.0",
-    "react-native-web": "^0.20.0",
-    "expo-splash-screen": "~0.30.8"
+    "react-native-web": "^0.20.0"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",

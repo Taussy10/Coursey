@@ -7,6 +7,7 @@ const openai = new OpenAI({
 })
 
 const aiModel = async() => {
+    try {
 const completion = await openai.chat.completions.create({
     model: "deepseek/deepseek-chat-v3-0324:free",
     messages: [
@@ -14,5 +15,10 @@ const completion = await openai.chat.completions.create({
     ],
   })
   console.log("AIModel response from ai.ts :",completion.choices[0].message)
-  return completion.choices[0].message
+  return completion.choices[0].message        
+    } catch (error) {
+  console.log("AIModel error from ai.ts :",error);
+        
+    }
+
 }

@@ -20,14 +20,33 @@ import dedent from "dedent";
 // our prompt so that LLM can't confuse that's why using 
 // dedent  
 // btw dedent syntax:  dedent`write your text`
-
+//   As your are coaching teacher 
+    // - User want to learn about the topic
+    // - Generate 5-7 Course title for study (Short)
+    // - Make sure it is releated to description
+    // - Output will be ARRAY of String in JSON FORMAT only
+    // - Do not add any plain text in output,
+    // PROMPT SHOULD BE LIKE THIS BELOW NOTHING JUST DATA THAT'S IT. 
+    // lodu tujhe samjh nahi aata kya ? 
+    // I don't need this: "Here is the response in the exact format you requested:"
+    // I only once need this data 
 export default {
-  IDEA: dedent`:As your are coaching teacher 
-    - User want to learn about the topic
-    - Generate 5-7 Course title for study (Short)
-    - Make sure it is releated to description
-    - Output will be ARRAY of String in JSON FORMAT only
-    - Do not add any plain text in output,
+  IDEA: dedent`: As a course expert:
+- User wants to learn the topic.
+- Generate 5-7 short, beginner-friendly course titles.
+- Make sure they are related to the description.
+- Respond with an ARRAY of STRINGS in valid JSON format.
+- DO NOT include any other text, no explanations, no labels like "Input" or "Output".
+- Just return the array, nothing else.
+    [
+    "Introduction to Python Programming",
+    "Data Structures and Algorithms in Python",
+    "Python for Data Science and Machine Learning",
+    "Web Development with Python and Django",
+    "Automation and Scripting with Python",
+    "Object-Oriented Programming in Python",
+    "Python for Cybersecurity and Ethical Hacking"
+]
     `,
   // - Chapter Explain in HTML Form, (Code example if required), add line break if required
   COURSE: dedent`: As you are coaching teacher

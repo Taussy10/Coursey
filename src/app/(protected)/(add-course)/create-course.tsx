@@ -66,7 +66,7 @@ className='  bg-green-500  p-2  justify-center items-center'
 >
   {
     loading?(<ActivityIndicator size={"small"} color={"blue"}/>):(
-    <Text className='   rounded-xl font-roboto- text-white text-2xl'>Create Course</Text>)
+    <Text className='   rounded-xl font-roboto- text-white text-2xl'>Create Topic</Text>)
   }
 </TouchableOpacity>
 
@@ -86,14 +86,22 @@ that map metod works only for array and your json must be strinigify json so
 {
  topic?.map((item, index) => {
   console.log("ITems :",item);
+  // This map method runs a loop over 
+  // array then returns it's indexes in a key called index 
+  // then you have to provide key to conatiner so that it map 
+  // method know that this to render basically for performance    
+  // console.log("Index :",index);
   
     return(
       // Container
       <View  key={index}>
-        <View className='w-40 '>
-         {/* <Text className=' w-full'>Topic {item}</Text> */}
-         <Text className=' w-full'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum, sit? 
-          Aliquam natus ut velit eveniet voluptas nam a recusandae.</Text>
+        {/* I didn't know that if yu write here w-40 then 
+        it will only take space till 40 */}
+        <View className=' border mb-3 p-1.5 rounded-2xl '>
+         <Text className='font-roboto-semibold text-blue-700'
+         numberOfLines={1}
+         >Topic {item}</Text>
+         {/* <Text className='  '>Python Data Structures: List and Dictionsares fdsfds</Text> */}
          </View>
       </View>
     )

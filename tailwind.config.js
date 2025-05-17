@@ -6,9 +6,12 @@ module.exports = {
   theme: {
     extend: {
       fontFamily:{
-      rRegular: ["Roboto_400Regular"],
-      rSemibold: ["Roboto_500Medium"],
-      rBold: ["Roboto_700Bold"],
+        // look by dash you create two words 
+        // so it will give error so put in key in quotes(string)
+        // It  will work cause keys are under the hood strings
+      "roboto-regular": ["Roboto_400Regular"],
+      "roboto-semibold": ["Roboto_500Medium"],
+      "roboto-bold": ["Roboto_700Bold"],
       }
     },
   },

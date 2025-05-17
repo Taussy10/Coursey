@@ -1,10 +1,16 @@
-import { StyleSheet, Text, View, Image } from 'react-native'
+import { StyleSheet, Text, View, Image, Button } from 'react-native'
 import React from 'react'
+import { router } from 'expo-router'
 
 const Index = () => {
   return (
-    <View className='  flex-1 px-4  bg-green-500'>
-      <Text className=' text-xl font-rSemibold'>Indexss</Text>
+    // So this is the space will work on 
+    <View className='  flex-1  '>
+      <Text className='  text-xl font-roboto-semibold'>Index</Text>
+      <Button
+      onPress={() => router.push("/home")}
+      title='Move to home screen'
+       />
     </View>
   )
 }

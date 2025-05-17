@@ -10,6 +10,7 @@ import { Stack } from 'expo-router';
 import * as SplashScreen from 'expo-splash-screen';
 import { useEffect } from 'react';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
+import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 // import {AuthProvider} from '../contexts/auth-provider';
 SplashScreen.preventAutoHideAsync();
 
@@ -19,6 +20,10 @@ Roboto_400Regular,
 Roboto_500Medium,
 Roboto_700Bold,
     });
+
+  
+    // Whenever font will be loaded/error 
+    // then useEffect will execute 
     useEffect(() => {
       if (loaded || error) {
         SplashScreen.hideAsync();
@@ -28,21 +33,23 @@ Roboto_700Bold,
     if (!loaded && !error) {
       return null;
     }
-    {
-      /* Why AuthProvider below GestureHandlerRootView ? 
-      // AuthProvider is sharing data between screens  
-      // but gestureHandler is use for whole app it needs to 
-      know what kinda gesture are used by user on app 
-      */
-    }
+
+    
  
   return (
 
     <GestureHandlerRootView>
       {/* <AuthProvider> */}
+      {/* you don't need to use safe area view everywhere just 
+      wrap whole app with safe area provider then by safea area view  */}
+      {/* provider cause we want to show infomration all over the app  */}
+      <SafeAreaProvider>
+        <SafeAreaView className=' flex-1 px-4'>
         <Stack screenOptions={{ headerShown: false }}>
           <Stack.Screen name="index" />
         </Stack>
+        </SafeAreaView>
+      </SafeAreaProvider>
       {/* </AuthProvider> */}
     </GestureHandlerRootView>
   );

@@ -71,11 +71,20 @@ export const createUser = async () => {
 
     if (!session) throw new Error("Didn't able to create sessions");
 
-  // const currentUser = await account.get();
-  // if (!currentUser) throw new Error("Failed to get current User")
+  const currentUser = await account.get();
+  if (!currentUser) throw new Error("Failed to get currentUser")
 
-  //   const addedUser = await addUser(currentUser?.$id, currentUser?.email, currentUser?.name )
-  // if (!addedUser) throw new Error("Failed to add user in database")
+ const newUser = await database.createDocument(
+config.databaseId!,
+config.usersCollectionId!,
+ID.unique(),
+{
+  user_id: currentUser.$id,
+  username: currentUser.name, 
+  email: currentUser.email,
+}
+ )
+ if (!newUser) new Error("Failed to create new User")
 
     return session;
   } catch (error) {
@@ -113,29 +122,3 @@ export const getCurrentUser = async () => {
 };
 
 
-export const addUser = async(userId:string|undefined, email:string|undefined, name:string|undefined) => {
-  try {
- const addedUser = await database.createDocument(
-// databaseId: string,
-// collectionId: string,
-// documentId: string,
-// data: object, permissions?:
-config.databaseId!,
-config.usersCollectionId!,
-ID.unique(),
-{
-  user_id: userId,
-  username: name, 
-  email: email,
-}
- )
- console.log("addedUser :",addedUser);
- return addUser
-     
-  } catch (error) {
-    console.log(error);
-    throw new Error("Failed to add user in database")
-    
-    
-  }
-}

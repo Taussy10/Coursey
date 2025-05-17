@@ -37,15 +37,7 @@ if (loading) {
      if (createdUser) {
       router.replace("/home")
      }
-
-      // This didn't work 
-      // await addUser(user?.$id, user?.email, user?.name  )
-//  const currentUser = await getCurrentUser()
-//  await addUser((await currentUser).$id, (await currentUser).email, (await currentUser).name )
-// await addUser(user?.$id, user?.email, user?.name)
-  // await addUser(currentUser?.$id, currentUser?.email, currentUser?.name )
-
-      // 
+     
     } catch (error) {
       // using here log cause I don't want on
       // user-end get a model for showing error information

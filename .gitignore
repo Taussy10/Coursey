@@ -26,3 +26,4 @@ android
 # refrence images
 # assets/reference-images
 assets/reference-images/
+.env

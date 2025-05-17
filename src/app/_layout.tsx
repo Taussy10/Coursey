@@ -11,7 +11,7 @@ import * as SplashScreen from 'expo-splash-screen';
 import { useEffect } from 'react';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
-// import {AuthProvider} from '../contexts/auth-provider';
+import {AuthProvider} from '../contexts/auth-provider';
 SplashScreen.preventAutoHideAsync();
 
 export default function RootLayout() {
@@ -39,7 +39,7 @@ Roboto_700Bold,
   return (
 
     <GestureHandlerRootView>
-      {/* <AuthProvider> */}
+      <AuthProvider>
       {/* you don't need to use safe area view everywhere just 
       wrap whole app with safe area provider then by safea area view  */}
       {/* provider cause we want to show infomration all over the app  */}
@@ -50,7 +50,7 @@ Roboto_700Bold,
         </Stack>
         </SafeAreaView>
       </SafeAreaProvider>
-      {/* </AuthProvider> */}
+      </AuthProvider>
     </GestureHandlerRootView>
   );
 }

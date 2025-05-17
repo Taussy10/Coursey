@@ -1,7 +1,12 @@
-import { View, Text, TextInput, Button } from 'react-native'
+import { View, Text, TextInput, Button, TouchableOpacity } from 'react-native'
 import React from 'react'
 import { router } from 'expo-router'
 const CreateCourse = () => {
+
+  // Generating topics 
+  const onGenerateTopic = () => {
+
+  }
   return (
     <View>
       <Text>CreateCourse</Text>
@@ -20,7 +25,7 @@ const CreateCourse = () => {
       // style={{height: 100, }}
 
       // when you add height then cursor will start from middle 
-      // so use align-top to aliging it top 
+      // so use align-top to alig ing it top 
       className=" mb-6 h-28    align-top border rounded-2xl bg-white  text-black"
 
       />
@@ -30,6 +35,9 @@ const CreateCourse = () => {
             title= 'Create a course'
             onPress={() => router.push('/create-course')}
             />
+
+            {/* For selecting topics */}
+            
       
     </View>
   )

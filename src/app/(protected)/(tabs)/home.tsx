@@ -3,7 +3,7 @@ import {useEffect} from 'react'
 import { useAuthContext } from '~/src/contexts/auth-provider';
 import { Feather} from '@expo/vector-icons';
 import { router } from 'expo-router';
-
+import { useRouter } from 'expo-router';
 const Home = () => {
     const { loggedIn, user, loading } = useAuthContext();
   console.log("User from home :",user);

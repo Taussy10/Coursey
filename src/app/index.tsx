@@ -19,7 +19,7 @@ if (loading) {
   )
 }
   if (loggedIn && user) {
-    return <Redirect href="/home" />;
+    return <Redirect href='/create-course' />;
   }
 
   // This fun will login the user

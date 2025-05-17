@@ -12,11 +12,26 @@ import {jsonrepair} from 'jsonrepair'
 const CreateCourse = () => {
  const [loading, setLoading] = useState(false)
  const [topic, setTopic] = useState([])
+//  want to store in array of topic selected
+ const [selectedTopics, setSelectedTopics] = useState([])
  console.log("TOPIC :",topic);
  console.log("TOPIC TYPEOf  :",typeof topic);
 
  
+const onTopicSelect = (topic) => {
+  const isAlreadyExist = selectedTopics.find((item)=> item === topic)
+  if(!isAlreadyExist){
+    setSelectedTopics((prev)=>( [...prev, topic]))
+  }else{
+  const topics = selectedTopics.filter((item) => (item!==topic));
+  setSelectedTopics(topics)
+}
+}
 
+const isTopicSelected = () => {
+  const selection = selectedTopics.find((item)=>(item === topic))
+  return selection?true:false
+}
   // Generating topics 
   const onGenerateTopic = async() => {
       try {
@@ -60,13 +75,15 @@ const CreateCourse = () => {
       />
       {/* Add activity indicator */}
 
+{/* While generating disable the button */}
 <TouchableOpacity
             onPress={onGenerateTopic}
+ disabled={loading}
 className='  bg-green-500  p-2  justify-center items-center'
 >
   {
     loading?(<ActivityIndicator size={"small"} color={"blue"}/>):(
-    <Text className='   rounded-xl font-roboto- text-white text-2xl'>Create Topic</Text>)
+    <Text className='rounded-xl font-roboto- text-white text-2xl'>Create Topic </Text>)
   }
 </TouchableOpacity>
 
@@ -83,9 +100,16 @@ that map metod works only for array and your json must be strinigify json so
  TypeError: topic?.map is not a function
 (because .map() doesn’t work on strings
  */}
+
+
+
+{/* Container for all the topics */}
+ <View className='mb-6'>
 {
+
+  
  topic?.map((item, index) => {
-  console.log("ITems :",item);
+  // console.log("ITems :",item);
   // This map method runs a loop over 
   // array then returns it's indexes in a key called index 
   // then you have to provide key to conatiner so that it map 
@@ -93,21 +117,40 @@ that map metod works only for array and your json must be strinigify json so
   // console.log("Index :",index);
   
     return(
-      // Container
-      <View  key={index}>
+      // You need this view
+      //  cause key can be use only in vew props
+      // otherwise it has no use 
+      // btw it's container for each time 
+      // which is also that touchable so no use 
+      <View   key={index}>
+
         {/* I didn't know that if yu write here w-40 then 
         it will only take space till 40 */}
-        <View className=' border mb-3 p-1.5 rounded-2xl '>
-         <Text className='font-roboto-semibold text-blue-700'
+        <TouchableOpacity 
+       onPress={() => onTopicSelect(topic)}
+       className={` border mb-3 p-1.5 rounded-2xl ${isTopicSelected()? 'bg-blue-600': 'bg-red-600'} `}>
+         <Text className='font-roboto-semibold text-black'
          numberOfLines={1}
          >Topic {item}</Text>
          {/* <Text className='  '>Python Data Structures: List and Dictionsares fdsfds</Text> */}
+         </TouchableOpacity>
          </View>
-      </View>
     )
   })
 }
+ </View>
 
+
+{/* <TouchableOpacity
+            // onPress={onGenerateTopic}
+ disabled={loading}
+className=' mt-6 bg-green-500  p-2  justify-center items-center'
+>
+  {
+    loading?(<ActivityIndicator size={"small"} color={"blue"}/>):(
+    <Text className='   rounded-xl font-roboto- text-white text-2xl'>Generate Course</Text>)
+  }
+</TouchableOpacity> */}
 
 
 

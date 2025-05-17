@@ -3,11 +3,11 @@ import { Alert, Button, StyleSheet, Text, View, TouchableOpacity, Image, Activit
 import { Redirect, router } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
 import { AntDesign } from '@expo/vector-icons';
-import { createUser } from '../appwrite/appwrite';
+import { addUser, config, createUser, getCurrentUser } from '../appwrite/appwrite';
 // import { allImages, exploreData } from '../data/data';
 import { useAuthContext } from '@/contexts/auth-provider';
 // import images from '~/constants/images';
-
+import { account } from '../appwrite/appwrite';
 const Index = () => {
   const { loggedIn, user, loading } = useAuthContext();
 
@@ -27,8 +27,25 @@ if (loading) {
     try {
       // will call the createUser function
       // and store the return value in user variable
-      const user = await createUser();
-      // Then push the user to home screeen
+      // dude dhyaan se you can't write 
+      // variable as user here cause we want to user from useAuthContext 
+      // const user = createUser()
+      // I want that it should also execute 
+      // addUser function if addUser function is 
+      // failed then whole try should faile basically not authtenticate 
+     const createdUser = await createUser();
+     if (createdUser) {
+      router.replace("/home")
+     }
+
+      // This didn't work 
+      // await addUser(user?.$id, user?.email, user?.name  )
+//  const currentUser = await getCurrentUser()
+//  await addUser((await currentUser).$id, (await currentUser).email, (await currentUser).name )
+// await addUser(user?.$id, user?.email, user?.name)
+  // await addUser(currentUser?.$id, currentUser?.email, currentUser?.name )
+
+      // 
     } catch (error) {
       // using here log cause I don't want on
       // user-end get a model for showing error information
@@ -39,6 +56,7 @@ if (loading) {
       throw new Error('Failed to Authorize');
     }
   };
+console.log("config :",config);
 
   return (
     <View >

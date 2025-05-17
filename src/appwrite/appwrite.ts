@@ -23,11 +23,12 @@ export const config = {
   endpoint: process.env.EXPO_PUBLIC_APPWRITE_ENDPOINT,
   platform: process.env.EXPO_PUBLIC_APPWRITE_PLATFORM,
   databaseId: process.env.EXPO_PUBLIC_APPWRITE_DATABASE_ID,
-  recipeCollectionId: process.env.EXPO_PUBLIC_APPWRITE_RECIPE_COLLECTION_ID,
-  extraInfoCollectionId: process.env.EXPO_PUBLIC_APPWRITE_EXTRA_INFO_COLLECTION_ID,
-  ingredientsCollectionId: process.env.EXPO_PUBLIC_APPWRITE_INGREDIENTS_COLLECTION_ID,
-  stepsCollectionId: process.env.EXPO_PUBLIC_APPWRITE_STEPS_COLLECTION_ID,
-  bookmarkCollectionId: process.env.EXPO_PUBLIC_APPWRITE_BOOKMARK_COLLECTION_ID,
+  usersCollectionId: process.env.EXPO_PUBLIC_APPWRITE_USERS_COLLECTION_ID,
+
+  // extraInfoCollectionId: process.env.EXPO_PUBLIC_APPWRITE_EXTRA_INFO_COLLECTION_ID,
+  // ingredientsCollectionId: process.env.EXPO_PUBLIC_APPWRITE_INGREDIENTS_COLLECTION_ID,
+  // stepsCollectionId: process.env.EXPO_PUBLIC_APPWRITE_STEPS_COLLECTION_ID,
+  // bookmarkCollectionId: process.env.EXPO_PUBLIC_APPWRITE_BOOKMARK_COLLECTION_ID,
 };
 
 // that ! is for saying to typescrip that these exists
@@ -70,6 +71,12 @@ export const createUser = async () => {
 
     if (!session) throw new Error("Didn't able to create sessions");
 
+  // const currentUser = await account.get();
+  // if (!currentUser) throw new Error("Failed to get current User")
+
+  //   const addedUser = await addUser(currentUser?.$id, currentUser?.email, currentUser?.name )
+  // if (!addedUser) throw new Error("Failed to add user in database")
+
     return session;
   } catch (error) {
     console.log('Error from login in appwrite.ts :', error);
@@ -104,3 +111,31 @@ export const getCurrentUser = async () => {
     return null;
   }
 };
+
+
+export const addUser = async(userId:string|undefined, email:string|undefined, name:string|undefined) => {
+  try {
+ const addedUser = await database.createDocument(
+// databaseId: string,
+// collectionId: string,
+// documentId: string,
+// data: object, permissions?:
+config.databaseId!,
+config.usersCollectionId!,
+ID.unique(),
+{
+  user_id: userId,
+  username: name, 
+  email: email,
+}
+ )
+ console.log("addedUser :",addedUser);
+ return addUser
+     
+  } catch (error) {
+    console.log(error);
+    throw new Error("Failed to add user in database")
+    
+    
+  }
+}

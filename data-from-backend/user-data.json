@@ -1,0 +1,30 @@
+{
+  "$createdAt": "2025-05-17T10:24:52.432+00:00",
+  "$id": "682863f46973d8bb21b1",
+  "$updatedAt": "2025-05-17T10:24:53.347+00:00",
+  "accessedAt": "2025-05-17T10:24:52.431+00:00",
+  "email": "tausif01092@gmail.com",
+  "emailVerification": true,
+  "labels": [],
+  "mfa": false,
+  "name": "hello com",
+  "passwordUpdate": "",
+  "phone": "",
+  "phoneVerification": false,
+  "prefs": {},
+  "registration": "2025-05-17T10:24:52.431+00:00",
+  "status": true,
+  "targets": [
+    {
+      "$createdAt": "2025-05-17T10:24:52.487+00:00",
+      "$id": "682863f4771dfebc3de5",
+      "$updatedAt": "2025-05-17T10:24:52.487+00:00",
+      "expired": false,
+      "identifier": "tausif01092@gmail.com",
+      "name": "",
+      "providerId": null,
+      "providerType": "email",
+      "userId": "682863f46973d8bb21b1"
+    }
+  ]
+}

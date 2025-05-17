@@ -1,4 +1,4 @@
-import { Alert, Button, StyleSheet, Text, View, TouchableOpacity, Image } from 'react-native';
+import { Alert, Button, StyleSheet, Text, View, TouchableOpacity, Image, ActivityIndicator } from 'react-native';
 
 import { Redirect, router } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
@@ -9,12 +9,15 @@ import { useAuthContext } from '@/contexts/auth-provider';
 // import images from '~/constants/images';
 
 const Index = () => {
-  const { loggedIn, user } = useAuthContext();
-  // if (!loggedIn && user) {
-  // It's very bad code cause when loggedIn true then it doesn't let naviage to home screen
-  // instead if loggedIn is false then don't navigate
-  // if user is falsey value and user is also falsey value
-  // then don't redirect it otherwise redirect it
+  const { loggedIn, user, loading } = useAuthContext();
+
+if (loading) {
+  return(
+    <View className=' flex-1 items-center justify-center'>
+    <ActivityIndicator size={"large"} color={"blue"} />
+    </View>
+  )
+}
   if (loggedIn && user) {
     return <Redirect href="/home" />;
   }
@@ -67,7 +70,7 @@ const Index = () => {
         <TouchableOpacity
           onPress={loginUser}
           activeOpacity={0.7}
-          className="      w-full flex-row 
+          className=" w-full flex-row 
           items-center justify-center 
           gap-2 rounded-2xl bg-green-700 p-3
           

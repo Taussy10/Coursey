@@ -11,27 +11,46 @@ import {jsonrepair} from 'jsonrepair'
 
 const CreateCourse = () => {
  const [loading, setLoading] = useState(false)
- const [topic, setTopic] = useState([])
+ const [topic, setTopic] = useState(["Introduction to Python Programming", "Data Structures and Algorithms in Python", "Python for Data Science and Machine Learning", "Web Development with Python and Django", "Automation and Scripting with Python", "Object-Oriented Programming in Python", "Python for Cybersecurity and Ethical Hacking"])
 //  want to store in array of topic selected
- const [selectedTopics, setSelectedTopics] = useState([])
- console.log("TOPIC :",topic);
- console.log("TOPIC TYPEOf  :",typeof topic);
+//  const [selectedTopics, setSelectedTopics] = useState([])
+const [storeSelectedTopic, setStoreSelectedTopic] = useState([])
+//  console.log("TOPIC :",topic);
+//  console.log("TOPIC TYPEOf  :",typeof topic);
 
- 
-const onTopicSelect = (topic) => {
-  const isAlreadyExist = selectedTopics.find((item)=> item === topic)
-  if(!isAlreadyExist){
-    setSelectedTopics((prev)=>( [...prev, topic]))
+ const selectedTopics = (item:string) => {
+  console.log("Selected item :",item);
+  
+  // this set is function in which we are passing props then 
+  // destrcute it then adding data just a basic js   
+  // make sure that there are not duplicates 
+  if (!storeSelectedTopic.includes(item)) {
+    setStoreSelectedTopic((prev) =>( [...prev, item]))
   }else{
-  const topics = selectedTopics.filter((item) => (item!==topic));
-  setSelectedTopics(topics)
-}
-}
+    setStoreSelectedTopic((storedItems) => storedItems.filter((t) => t !== item));
 
-const isTopicSelected = () => {
-  const selection = selectedTopics.find((item)=>(item === topic))
-  return selection?true:false
-}
+  
+    
+  }
+  console.log("stored Topics:",storeSelectedTopic);
+  
+  // now we need to store it in useState so that we can implement background color change 
+ }
+ 
+// const onTopicSelect = (topic) => {
+//   const isAlreadyExist = selectedTopics.find((item)=> item === topic)
+//   if(!isAlreadyExist){
+//     setSelectedTopics((prev)=>( [...prev, topic]))
+//   }else{
+//   const topics = selectedTopics.filter((item) => (item!==topic));
+//   setSelectedTopics(topics)
+// }
+// }
+
+// const isTopicSelected = () => {
+//   const selection = selectedTopics.find((item)=>(item === topic))
+//   return selection?true:false
+// }
   // Generating topics 
   const onGenerateTopic = async() => {
       try {
@@ -61,7 +80,7 @@ const isTopicSelected = () => {
       // This textinput is for online one line
       // numberOfLines={3} 
           multiline={true}
-                      numberOfLines={4}
+         numberOfLines={4}
      // SOMETIMES ClassName height width props 
      // have some problem in TextInput so
      // it takes time to execute 
@@ -122,17 +141,21 @@ that map metod works only for array and your json must be strinigify json so
       // otherwise it has no use 
       // btw it's container for each time 
       // which is also that touchable so no use 
-      <View   key={index}>
+      <View key={index}>
 
         {/* I didn't know that if yu write here w-40 then 
         it will only take space till 40 */}
-        <TouchableOpacity 
-       onPress={() => onTopicSelect(topic)}
-       className={` border mb-3 p-1.5 rounded-2xl ${isTopicSelected()? 'bg-blue-600': 'bg-red-600'} `}>
+        <TouchableOpacity onPress={()=> selectedTopics(item)}
+      //  onPress={() => onTopicSelect(topic)}
+      //  className={` border mb-3 p-1.5 rounded-2xl ${isTopicSelected()? 'bg-blue-600': 'bg-red-600'} `}>
+      //  className={` border mb-3 p-1.5 rounded-2xl ${isTopicSelected()? 'bg-blue-600': 'bg-red-600'} `}>
+        // For knowing the topic is choosen or not ?  
+
+       className={` border mb-3 p-1.5 rounded-2xl ${storeSelectedTopic.includes(item)? 'bg-blue-600':'bg-red-600'} `}
+       >
          <Text className='font-roboto-semibold text-black'
          numberOfLines={1}
          >Topic {item}</Text>
-         {/* <Text className='  '>Python Data Structures: List and Dictionsares fdsfds</Text> */}
          </TouchableOpacity>
          </View>
     )

@@ -2,10 +2,9 @@ import OpenAI from "openai"
 
 const openai = new OpenAI({
   baseURL: process.env.EXPO_PUBLIC_OPENROUTER_BASE_URL,
+  // don't publish it 
   // apiKey: process.env.EXPO_PUBLIC_OPENROUTER_API_KEY,
-  apiKey: `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 
-`,
-
+  
 })
 
 export const aiModel = async(prompt:string) => {

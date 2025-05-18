@@ -25,6 +25,13 @@ export const config = {
   databaseId: process.env.EXPO_PUBLIC_APPWRITE_DATABASE_ID,
   usersCollectionId: process.env.EXPO_PUBLIC_APPWRITE_USERS_COLLECTION_ID,
 
+  coursesCollectionId: process.env.EXPO_PUBLIC_APPWRITE_COURSES_COLLECTION_ID,
+  chaptersCollectionId: process.env.EXPO_PUBLIC_APPWRITE_CHAPTERS_COLLECTION_ID,
+  chaptersTopicsCollectionId: process.env.EXPO_PUBLIC_APPWRITE_CHAPTERS_TOPICS_COLLECTION_ID,
+  flashcardsCollectionId: process.env.EXPO_PUBLIC_APPWRITE_FLASHCARDS_COLLECTION_ID,
+  chaptersQnaCollectionId: process.env.EXPO_PUBLIC_APPWRITE_CHAPTERS_QNA_COLLECTION_ID,
+  chaptersQuizzesCollectionId: process.env.EXPO_PUBLIC_APPWRITE_CHAPTERS_QUIZZES_COLLECTION_ID,
+
   // extraInfoCollectionId: process.env.EXPO_PUBLIC_APPWRITE_EXTRA_INFO_COLLECTION_ID,
   // ingredientsCollectionId: process.env.EXPO_PUBLIC_APPWRITE_INGREDIENTS_COLLECTION_ID,
   // stepsCollectionId: process.env.EXPO_PUBLIC_APPWRITE_STEPS_COLLECTION_ID,
@@ -106,11 +113,12 @@ export const logout = async () => {
 export const getCurrentUser = async () => {
   try {
     const result = await account.get();
-    console.log('Result from getCurrentUser fun in appwrite.ts :', result);
+    // console.log('Result from getCurrentUser fun in appwrite.ts :', result);
     // if you want to photos of user then you can check in 59 mins
     // if(result.$id){
 
     // }
+    // you need this so that funtion can execute so have to return
     return result;
   } catch (error) {
     // using here log cause I don't want on
@@ -122,3 +130,22 @@ export const getCurrentUser = async () => {
 };
 
 
+const addDataDb = () => {
+  try {
+    const promise = database.createDocument(
+      // databaseId: string,
+      // collectionId: string,
+      // documentId: string,
+      // data: object,
+      config.databaseId,
+      ID.unique(),
+      {
+        
+      }
+    )
+  } catch (error) {
+    console.log("Error from addDataDb in appwrite.ts :",error);
+    throw new Error("Failed to add data in DB")
+    
+  }
+}

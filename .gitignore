@@ -27,3 +27,4 @@ android
 # assets/reference-images
 assets/reference-images/
 .env
+key.ts

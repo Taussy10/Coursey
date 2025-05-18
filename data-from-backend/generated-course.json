@@ -1,0 +1,260 @@
+```json
+{
+  "courses": [
+    {
+      "course_name": "Introduction to Python Programming",
+      "description": "A beginner-friendly course to learn Python from scratch. Covers basics like variables, loops, and functions, and progresses to more advanced topics like object-oriented programming.",
+      "category": "Tech & Coding",
+      "banner_image": "/banner3.png",
+      "chapters": [
+        {
+          "chapter_title": "Python Basics",
+          "content": [
+            {
+              "topic": "Variables and Data Types",
+              "description": "Learn how to declare variables and understand different data types in Python. Example: `name = 'Alice'` (string), `age = 25` (integer)."
+            },
+            {
+              "topic": "Conditional Statements",
+              "description": "Use `if-elif-else` to control program flow. Example: Checking if a number is positive, negative, or zero."
+            }
+          ]
+        },
+        {
+          "chapter_title": "Functions and Loops",
+          "content": [
+            {
+              "topic": "Defining Functions",
+              "description": "Create reusable code blocks with `def`. Example: A function to add two numbers."
+            },
+            {
+              "topic": "For and While Loops",
+              "description": "Iterate over sequences with `for` and `while`. Example: Printing numbers from 1 to 10."
+            }
+          ]
+        }
+      ],
+      "quizzes": [
+        {
+          "question": "What is the output of `print(3 + 2 * 2)`?",
+          "options": ["7", "10", "5", "Error"],
+          "answer": "7"
+        },
+        {
+          "question": "Which keyword is used to define a function in Python?",
+          "options": ["func", "define", "def", "function"],
+          "answer": "def"
+        }
+      ],
+      "flashcards": [
+        {
+          "front": "What is Python?",
+          "back": "A high-level, interpreted programming language known for readability."
+        },
+        {
+          "front": "What does `len()` do?",
+          "back": "Returns the length of a string, list, or other iterable."
+        }
+      ],
+      "qa_pairs": [
+        {
+          "question": "How do you comment in Python?",
+          "answer": "Use `#` for single-line comments and `'''` or `\"\"\"` for multi-line comments."
+        },
+        {
+          "question": "What is a list in Python?",
+          "answer": "An ordered, mutable collection of items enclosed in `[]`."
+        }
+      ]
+    },
+    {
+      "course_name": "Personal Finance for Beginners",
+      "description": "Learn the fundamentals of managing money, budgeting, and investing to build financial stability.",
+      "category": "Business & Finance",
+      "banner_image": "/banner5.png",
+      "chapters": [
+        {
+          "chapter_title": "Budgeting Basics",
+          "content": [
+            {
+              "topic": "Income vs. Expenses",
+              "description": "Track your earnings and spending. Example: Using a spreadsheet to log monthly income and bills."
+            },
+            {
+              "topic": "Creating a Budget",
+              "description": "Allocate funds to needs, wants, and savings. Example: The 50/30/20 rule."
+            }
+          ]
+        },
+        {
+          "chapter_title": "Introduction to Investing",
+          "content": [
+            {
+              "topic": "Stocks and Bonds",
+              "description": "Understand the difference. Example: Buying shares of a company (stocks) vs. lending money to a corporation (bonds)."
+            },
+            {
+              "topic": "Risk and Diversification",
+              "description": "Spread investments to minimize risk. Example: Investing in multiple industries."
+            }
+          ]
+        }
+      ],
+      "quizzes": [
+        {
+          "question": "What does the 50/30/20 budget rule allocate to savings?",
+          "options": ["50%", "30%", "20%", "10%"],
+          "answer": "20%"
+        },
+        {
+          "question": "Which is generally riskier: stocks or bonds?",
+          "options": ["Stocks", "Bonds", "Both are equal", "Depends on the market"],
+          "answer": "Stocks"
+        }
+      ],
+      "flashcards": [
+        {
+          "front": "What is compound interest?",
+          "back": "Interest earned on both the initial principal and accumulated interest."
+        },
+        {
+          "front": "What is an emergency fund?",
+          "back": "Savings set aside for unexpected expenses, typically 3-6 months' worth of living costs."
+        }
+      ],
+      "qa_pairs": [
+        {
+          "question": "How can you reduce expenses?",
+          "answer": "Cut discretionary spending, negotiate bills, or use frugal habits like meal prepping."
+        },
+        {
+          "question": "What is a 401(k)?",
+          "answer": "A retirement savings plan sponsored by an employer, often with matching contributions."
+        }
+      ]
+    }
+  ]
+}
+```
+
+// After parsing the course 
+{"courses": [
+  {
+    "banner_image": "/banner3.png",
+   "category": "Tech & Coding",
+    "chapters": [Array],
+     "course_name": "Introduction to Python Programming",
+      "description": "A beginner-friendly course to learn Python from scratch. Covers basics like variables, loops, and functions, and progresses to more advanced topics like object-oriented programming.",
+      "flashcards": [Array],
+      "qa_pairs": [Array],
+      "quizzes": [Array]
+    },
+      {
+      "banner_image": "/banner5.png",
+      "category": "Business & Finance",
+      "chapters": [Array],
+      "course_name": "Personal Finance for Beginners", 
+      "description": "Learn the fundamentals of managing money, budgeting, and investing to build financial stability.", 
+      "flashcards": [Array],
+      "qa_pairs": [Array],
+      "quizzes": [Array]
+      }
+      ]
+    }
+
+    // After for each method
+     {
+      "bannerImage": "/banner5.png",
+       "category": "Business & Finance",
+      "chapters": [{
+        "chapterName": "Budgeting Basics",
+        "content": [Array]},
+         {
+          "chapterName": "Introduction to Investing",
+           "content": [Array]}],
+            "courseName": "Financial Literacy for Young Adults",
+             "description": "Master budgeting, investing, and financial planning to secure your future.", 
+             "flashcards": [
+              {"back": "Savings for unexpected expenses (e.g., 3-6 months of living expenses).", 
+              "front": "What is an emergency fund?"},
+               {"back": "Spreading investments across assets to reduce risk (e.g., stocks, bonds, real estate).", 
+               "front": "Define 'diversification'."}],
+                "qaPairs": [
+                  {"answer": "Pay bills on time, keep credit utilization low, and avoid opening many new accounts.",
+                   "question": "How can you improve your credit score?"},
+                    {"answer": "A retirement account where you pay taxes now but withdraw tax-free later.",
+                     "question": "What is a Roth IRA?"}
+                     ],
+                      "quizzes": [
+                        {"answer": "Calculate income", 
+                        "options": [Array],
+                         "question": "What is the first step in creating a budget?"
+                         },
+                          {"answer": "Stocks",
+"options": [Array],
+"question": "Which asset typically has higher risk?"}]}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{
+  "course_name": "Financial Accounting Fundamentals",
+  "description": "Master the basics of financial accounting and understand financial statements.",
+  "category": "Business & Finance",
+  "banner_image": "/banner2.png",
+   "chapters": [{
+    "chapter_name": "Introduction to Accounting",
+     "topics": [Array]
+    },
+    {"
+      chapter_name": "Financial Statements",
+       "topics": [Array]
+       }
+       ],
+    "flashcards": [
+      {
+        "back": "To show a company's financial position at a specific point in time.",
+        "front": "What is the purpose of a balance sheet?"
+        },
+        {
+        "back": "Revenue is total income, while profit is revenue minus expenses.",
+        "front": "What is the difference between revenue and profit?"
+        }
+        ],
+        "qna": [
+        {
+          "answer": "Balance Sheet, Income Statement, and Cash Flow Statement.",
+           "question": "What are the three main financial statements?"
+           }, 
+           {
+            "answer": "A system where every transaction affects at least two accounts (debit and credit).",
+            "question": "What is double-entry accounting?"
+            }
+            ],
+            "quizzes": [
+            {
+              "answer": "Assets = Liabilities + Owner's Equity",
+               "options": [Array],
+                "question": "What is the accounting equation?"
+                },
+                 {
+                  "answer": "Income Statement",
+                   "options": [Array],
+                    "question": "Which financial statement shows a company's profitability?"
+                    }
+                    ]
+                  }

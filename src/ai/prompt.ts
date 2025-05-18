@@ -49,63 +49,22 @@ export default {
 ]
     `,
   // - Chapter Explain in HTML Form, (Code example if required), add line break if required
-  COURSE: dedent`: As you are coaching teacher
-    - User want to learn about all topics
-    - Create 2 Courses With Course Name, Description, and 5/8 Chapters in each course
-    - Make sure to add chapters 
-    - List Content in each chapter along with Description in 5 to 8 lines
-    - Do not Just Explain what chapter about, Explain in Detail with Example
-    - Also Make Easy, Moderate and Advance Course depends on topics
-    - Add CourseBanner Image from ('/banner1.png','/banner2.png','/banner3.png','/banner4.png','/banner5.png','/banner6.png'), select It randomly
-    - Explain the chapter content as detailed tutorial with list of content
-    - Generate 10 Quizz, 10 Flashcard and 10 Questions answer
-    - Tag each course to one of the categorty from :["Tech & Coding","Business & Finance","Health & Fitness","Science & Engineering","Arts & Creativity"]
-    - Output in JSON Format only 
-    -  "courses": [
-  {
-    "courseTitle": '<Intro to Python>',
-    "description": '',
-    "banner_image": "/banner1.png",
-    "category":"",
-    "chapters": [
-      {
-        chapterName: '',
-        content: [
-          {
-            topic: '<Topic Name in 2 to 4 worlds ex.(Creating Variables)>'
-            explain: '< Detailed Explaination in 5 to 8 Lines if required>',
-            code: '<Code example of required else null',
-            example: '< example of required else null'
-          },
-          
-            ...
-          
-        ]
-      }
-    ],
-    quiz:[
-      {
-        question:'',
-        options:['a',b,c,d],
-        correctAns:''
-      }
-    ],
-    flashcards:[
-      {
-        front:'',
-        back:''
-      }
-    ],
-    qa:[
-      {
-        question:'',
-        answer:''
-      }
-    ]
-  }
-]
-    `
+COURSE: dedent`
+As you are a coaching teacher:
+- The user wants to learn about all topics.
+- Create 2 courses with Course Name, Description, and 2 Chapters in each course.
+- Make sure to include chapters.
+- List content in each chapter along with a description (1 to 2 lines each).
+- Do not just explain what the chapter is about—explain in detail with examples.
+- Include Easy, Moderate, and Advanced courses depending on the topics.
+- Randomly select a CourseBanner image from ('/banner1.png','/banner2.png','/banner3.png','/banner4.png','/banner5.png','/banner6.png').
+- Explain chapter content as a detailed tutorial with a list of topics.
+- Generate 2 quizzes, 2 flashcards, and 2 question-answer pairs.
+- Tag each course with one of the following categories: ["Tech & Coding", "Business & Finance", "Health & Fitness", "Science & Engineering", "Arts & Creativity"].
+- Output only in JSON format—do not return only data that's it don't return anyhting else just data in JSON format 
+ don't return anything like:  ### Key Features or this 
+  Sure! Here's a structured JSON response with two courses, each containing detailed chapters, quizzes, 
+  flashcards, and Q&A pairs, along with a randomly selected ban
+  Just return data in JSON fomrat that's it 
+`
 }
-
-
-

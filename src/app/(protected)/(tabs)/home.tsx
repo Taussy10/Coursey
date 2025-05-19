@@ -23,14 +23,45 @@ const fetchAllCourse = async() => {
   fetchAllCourse()
   }, [])
   // froma appwrite you get the value in JSON objectify
+const arr = [1,"a"]
+const arr1 = [{name:"a", age:18}]
+// console.log(arr1[0]);
 
-  // these are just JSON objects
   
-  console.log("COURSESsfds :", courses)
+
+// these are just JSON objects
+
+
+
+
+
+
+
+
+
+ 
+if (Array.isArray(courses?.documents)) {
+ courses.documents.map((element) => {
+    console.log("ELEM:", element);
+  });
+}
+
+ 
+
+
+
+
+
+  // console.log("COURSESsfds :", courses?.documents[0].forEach(element => {
+  //   console.log("ELEM :",element);
+    
+  // }))
+
+ 
   // this replacer is for ignoring things: null means don't ignore anything  
   // this space is just spacing from left side 
 
-  console.log("10",JSON.stringify(courses, null, 4))
+  // console.log("10",JSON.stringify(courses, null, 4))
 
   // console.log("COURSES :",JSON.stringify(courses,null,2));
   // why it's supportiing dot notation in objects  when JSON.stringfy is a string ? 
@@ -41,11 +72,11 @@ const fetchAllCourse = async() => {
   // give error cause error method only work on array 
   // bw why I'll use array method on it cause this chapter is contains 
   // value of array so it can work but not in case of string  
-  const h = JSON.stringify(courses?.documents[0].chapters.forEach((element) => {
-    console.log("ELEM :",typeof element);
-    return element
-  }) );
-  console.log(typeof h);
+  // const h = JSON.stringify(courses?.documents[0].chapters.forEach((element) => {
+  //   console.log("ELEM :",typeof element);
+  //   return element
+  // }) );
+  // console.log(typeof h);
   
   // console.log("COURSES_CHAPTERS :",courses?.chapters.forEach(element => {
   //   return console.log("ELEM :",element);

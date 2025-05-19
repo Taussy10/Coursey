@@ -218,7 +218,7 @@ export const fetchCourse = async() => {
     // console.log(promise);
     // for some reason promise and 
     // promise.documents are giving diffrent value
-return promise.documents
+return promise
 // return promise.documents
   } catch (error) {
     console.log("Error from fetchCourse :",error);

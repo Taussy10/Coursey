@@ -7,14 +7,18 @@ import { fetchCourse } from '~/src/appwrite/appwrite';
 
 const Home = () => {
     const { loggedIn, user, loading } = useAuthContext();
-    const [courses, SetCourses] = useState([])
+    const [courses, SetCourses] = useState(null)
   // console.log("User from home :",user);
 
+  // useEffect is asyn code that runs after the first render
 useEffect(() => {
 const fetchAllCourse = async() => {
   try {
     const result = await fetchCourse()
     SetCourses(result)
+   
+   
+
   } catch (error:any) {
     console.log("Error :",error);
     Alert.alert("Error", error.message) 
@@ -22,34 +26,44 @@ const fetchAllCourse = async() => {
 }
   fetchAllCourse()
   }, [])
-  // froma appwrite you get the value in JSON objectify
-const arr = [1,"a"]
-const arr1 = [{name:"a", age:18}]
-// console.log(arr1[0]);
 
+  // on first render it will show undefined then on 2nd render it will show data 
+ // so this will give udnefined cause it takes to load so use await 
+//  so for that can be do things 
+
+//  1.optional chaining: on first render it is undefined then ok 
+// but on 2nd render execute the code 
+const c = courses?.documents[0]
+console.log("Courser :",c);
+
+
+
+
+
+
+
+
+ 
+// if (Array.isArray(courses?.documents)) {
+//  courses.documents.map((element) => {
+//     console.log("ELEM:", element);
+//   });
+// }
+
+ 
+// if (courses?.documents[0]?.chapters === typeof Object) {
+// console.log("Typof :", courses?.documents[0]?.chapters);
+// }else{
+//  Alert.alert("h")
   
-
-// these are just JSON objects
-
-
-
-
-
-
-
-
+// }
+// if (Array.isArray(courses?.documents[0]?.chapters)) {
+//  courses?.documents[0]?.chapters.map((element) => {
+//     console.log("ELEM:", element);
+//   });
+// }
 
  
-if (Array.isArray(courses?.documents)) {
- courses.documents.map((element) => {
-    console.log("ELEM:", element);
-  });
-}
-
- 
-
-
-
 
 
   // console.log("COURSESsfds :", courses?.documents[0].forEach(element => {

@@ -85,7 +85,7 @@ const CreateCourse = () => {
     }
   };
   // This should be array, object 
-      console.log('GENERATED COURSE with courses :', generateCourse?.courses);
+      console.log('GENERATED COURSE :', generateCourse);
 // const course = generateCourse?.courses
 // // this for each runs a loop on array then return array one by one and it's diff from map method that it doesn't new array
 //       course?.forEach(element => {

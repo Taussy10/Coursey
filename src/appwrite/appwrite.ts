@@ -131,34 +131,19 @@ export const getCurrentUser = async () => {
 
 
 export const addDataDb = async(course:any) => {
-  
-  // course.forEach(element => {
-    
-  // });
-
   try {
      console.log("Curese from addDB :",course);
-
-  
-    console.log("BannerImage :",course.banner_image);
-    // console.log("BannerImage",fetechedData.banner_image);
-    
       const currentUser = await account.get();
     const promise =await database.createDocument(
-      // databaseId: string,
-      // collectionId: string,
-      // documentId: string,
-      // data: object,
       config.databaseId!,
       config.coursesCollectionId!,
       ID.unique(),
       {
         user_id: currentUser.$id,
-        course_name: "fetechedData.course_name",
-        description:"fetechedData.description",
-        category: "fetechedData.category",
-        // banner_image: fetechedData.banner_image
-        banner_image: "hello",
+        course_name: course.course_name,
+        description:course.description,
+        category: course.category,
+        banner_image: course.banner_image,
       }
     )
     console.log("REQ from fetchedData :",promise);

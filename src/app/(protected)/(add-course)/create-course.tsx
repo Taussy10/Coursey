@@ -79,7 +79,8 @@ const CreateCourse = () => {
       console.log("addDB :",addDb);
     } catch (error) {
       console.log('Error from onGenerateCourse funtion error', error);
-      Alert.alert('Error', 'Failed to Generate Course');
+      // Alert.alert('Error', 'Failed to Generate Course');
+      Alert.alert('Error', error.message);
     } finally {
       setLoadingCourse(false);
     }
@@ -106,7 +107,8 @@ const CreateCourse = () => {
       setTopic(JSON.parse(repairedJson));
     } catch (error) {
       console.log('Error from generatTopic funtion error', error);
-      Alert.alert('Error', 'Failed to Generate Topics');
+      // Alert.alert('Error', 'Failed to Generate Topics');
+      Alert.alert('Error', error.message);
     } finally {
       setLoading(false);
     }

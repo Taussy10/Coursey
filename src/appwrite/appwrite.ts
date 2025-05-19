@@ -131,10 +131,23 @@ export const getCurrentUser = async () => {
 
 
 export const addDataDb = async(course:any) => {
+  const chaptersData = course?.chapters?.forEach((element:any) => {
+    return element
+  }); 
+
+  // const chapterContentData = chaptersData.content.forEach((element:any) => {
+  //   return element
+  // });
+  const flashcard =  flashcards?.map((element:string) => ({
+        course_id: 'addChaptersCollection.$id',
+        front: element?.front,
+        back: element?.back,
+       
+        }))
   try {
      console.log("Curese from addDB :",course);
       const currentUser = await account.get();
-    const promise =await database.createDocument(
+    const addCourseCollection =await database.createDocument(
       config.databaseId!,
       config.coursesCollectionId!,
       ID.unique(),
@@ -144,10 +157,50 @@ export const addDataDb = async(course:any) => {
         description:course.description,
         category: course.category,
         banner_image: course.banner_image,
+
+        //  one thing you should know that we firstly use round bracke 
+        // cause we can only return one thing 
+    //     chapters: chapters?.forEach((element:string) => ({
+    //     chapter_id: addChaptersCollection.$id,
+    //     chapter_title: element.chapter_title,
+    //     // giving me content as undefined cause in console I'm getting [Array]
+    //     chapter_content: element?.content?.forEach((element:any) =>(
+    //       {
+    //     chapter_id: "element.",
+    //     topic: element.topic,
+    //     description: element.description,
+    //       }
+    //     )),
+
+    //     }
+    //   )
+    // ),
+
+        // There is no such thing as flashcard attribute 
+        // FOR FLASHCARDS
+        flashcard,
+
+        // // // FOR CHAPTERS_QNA
+        // chaptersQna: qa_pairs?.forEach((element:string) => ({
+        // course_id: 'addChaptersCollection.$id',
+        // question: element?.question,
+        // answer: element?.answer,
+        // })),
+
+        // // // FOR QUIZZES
+
+        //  chaptersQuizzes: quizzes?.forEach((element:string) => ({
+        // course_id: 'addChaptersCollection.$id',
+        // question: element?.question,
+        // options: element?.options,
+        // answer: element?.answer,
+        // })),
       }
     )
-    console.log("REQ from fetchedData :",promise);
-    return promise;
+
+//  const courseDocumentId = addCourseCollection.$id     
+
+return addCourseCollection;
     
   } catch (error) {
     console.log("Error from addDataDb in appwrite.ts :",error);

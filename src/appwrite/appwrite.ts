@@ -215,7 +215,11 @@ export const fetchCourse = async() => {
       config.databaseId!,
       config.coursesCollectionId!
     )
-return promise.documents
+    // console.log(promise);
+    // for some reason promise and 
+    // promise.documents are giving diffrent value
+return promise
+// return promise.documents
   } catch (error) {
     console.log("Error from fetchCourse :",error);
     throw new Error("Failed to Fetch Courses")

@@ -74,9 +74,10 @@ const CreateCourse = () => {
           // const courseData = await repairedJson?.courses
       // console.log("COursedData :",courseData);
       
-      // const addDb = await addDataDb([courseData])
-      const addDb = await addDataDb(parsedCourse)
-      console.log("addDB :",addDb);
+      router.push('/home')
+      // will add later
+      // const addDb = await addDataDb(parsedCourse)
+      // console.log("addDB :",addDb);
     } catch (error) {
       console.log('Error from onGenerateCourse funtion error', error);
       // Alert.alert('Error', 'Failed to Generate Course');

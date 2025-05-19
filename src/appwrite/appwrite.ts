@@ -130,22 +130,57 @@ export const getCurrentUser = async () => {
 };
 
 
-const addDataDb = () => {
+export const addDataDb = async(course:any) => {
+  
+  // course.forEach(element => {
+    
+  // });
+
   try {
-    const promise = database.createDocument(
+     console.log("Curese from addDB :",course);
+
+  
+    console.log("BannerImage :",course.banner_image);
+    // console.log("BannerImage",fetechedData.banner_image);
+    
+      const currentUser = await account.get();
+    const promise =await database.createDocument(
       // databaseId: string,
       // collectionId: string,
       // documentId: string,
       // data: object,
-      config.databaseId,
+      config.databaseId!,
+      config.coursesCollectionId!,
       ID.unique(),
       {
-        
+        user_id: currentUser.$id,
+        course_name: "fetechedData.course_name",
+        description:"fetechedData.description",
+        category: "fetechedData.category",
+        // banner_image: fetechedData.banner_image
+        banner_image: "hello",
       }
     )
+    console.log("REQ from fetchedData :",promise);
+    return promise;
+    
   } catch (error) {
     console.log("Error from addDataDb in appwrite.ts :",error);
     throw new Error("Failed to add data in DB")
     
   }
 }
+
+export const fetchCourse = async() => {
+  try {
+    const promise = await database.listDocuments(
+      config.databaseId!,
+      config.coursesCollectionId!
+    )
+return promise.documents
+  } catch (error) {
+    console.log("Error from fetchCourse :",error);
+    throw new Error("Failed to Fetch Courses")
+    
+  }
+} 

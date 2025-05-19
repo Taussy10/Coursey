@@ -258,3 +258,107 @@
                     }
                     ]
                   }
+
+
+ [{
+  "banner_image": "/banner1.png",
+   "category": "Tech & Coding",
+    "chapters": [Array],
+     "course_name": "Introduction to Machine Learning",
+      "description": "Learn the fundamentals of machine learning, from basic concepts to implementing algorithms using Python.",
+       "flashcards": [Array],
+        "qa_pairs": [Array],
+         "quizzes": [Array]},
+          {
+            "banner_image": "/banner4.png",
+             "category": "Health & Fitness",
+              "chapters": [Array],
+               "course_name": "Yoga for Mind and Body",
+                "description": "A comprehensive guide to yoga, covering basic poses, breathing techniques, and their benefits for mental and physical health.",
+                 "flashcards": [Array],
+                  "qa_pairs": [Array],
+                   "quizzes": [Array]}]
+
+
+[
+  {
+    "banner_image": "/banner3.png",
+     "category": "Tech & Coding",
+      "chapters": [[Object], [Object]],
+       "course_name": "Introduction to Python Programming", 
+       "description": "A beginner-friendly course to learn Python from scratch. Covers basics like variables, loops, and functions, and progresses to more advanced topics like object-oriented programming.",
+        "flashcards": [[Object], [Object]],
+         "qa_pairs": [[Object], [Object]],
+          "quizzes": [[Object], [Object]]
+          },
+          // Now next chapters
+          {
+ "banner_image": "/banner5.png",
+  "category": "Business & Finance",
+   "chapters": [[Object], [Object]],
+    "course_name": "Personal Finance for Beginners",
+     "description": "Learn the fundamentals of managing money, budgeting, and investing to build financial stability.", 
+     "flashcards": [[Object], [Object]], "qa_pairs": [[Object], [Object]],
+      "quizzes": [[Object], [Object]
+      ]
+      }
+    ]
+
+
+
+
+
+
+
+
+
+
+
+{
+  "course_name": "Introduction to Python Programming",
+  "description": "A beginner-friendly course to learn Python from scratch. Covers basics like variables, loops, and functions, and progresses to more advanced topics like object-oriented programming.",
+  "category": "Tech & Coding",
+  "banner_image": "/banner3.png",
+  "chapters": [
+    {
+      "chapter_title": "Python Basics",
+      "content": "Learn about variables, data types, and simple input/output."
+    },
+    {
+      "chapter_title": "Functions and Loops",
+      "content": "Understand how to define functions and use for/while loops."
+    }
+  ],
+  "flashcards": [
+    {
+      "front": "What is Python?",
+      "back": "A high-level, interpreted programming language known for readability."
+    },
+    {
+      "front": "What does `len()` do?",
+      "back": "Returns the length of a string, list, or other iterable."
+    }
+  ],
+  "qa_pairs": [
+    {
+      "question": "How do you comment in Python?",
+      "answer": "Use `#` for single-line comments and `\"\"\"` for multi-line comments."
+    },
+    {
+      "question": "What is a list in Python?",
+      "answer": "An ordered, mutable collection of items enclosed in `[]`."
+    }
+  ],
+  "quizzes": [
+    {
+      "question": "What is the output of `print(3 + 2 * 2)`?",
+      "options": ["10", "7", "8", "6"],
+      "answer": "7"
+    },
+    {
+      "question": "Which keyword is used to define a function in Python?",
+      "options": ["def", "function", "fun", "define"],
+      "answer": "def"
+    }
+  ]
+}

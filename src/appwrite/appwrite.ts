@@ -209,15 +209,21 @@ return addCourseCollection;
   }
 }
 
-export const fetchCourse = async() => {
+export const fetchCourse = async(userId:string) => {
   try {
     const promise = await database.listDocuments(
       config.databaseId!,
-      config.coursesCollectionId!
+      config.coursesCollectionId!,
+      [
+        Query.equal('user_id',userId ) 
+
+      ]
+      
     )
     // console.log(promise);
     // for some reason promise and 
     // promise.documents are giving diffrent value
+    
 return promise
 // return promise.documents
   } catch (error) {

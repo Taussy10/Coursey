@@ -1,4 +1,4 @@
-import { View, Text, Button, Alert, FlatList } from 'react-native';
+import { View, Text, Button, Alert, FlatList, Image } from 'react-native';
 import { useAuthContext } from '~/src/contexts/auth-provider';
 import { Feather } from '@expo/vector-icons';
 import { router } from 'expo-router';
@@ -16,7 +16,7 @@ const Home = () => {
   useEffect(() => {
     const fetchAllCourse = async () => {
       try {
-        const result = await fetchCourse();
+        const result = await fetchCourse(user?.$id);
         SetCourses(result);
       } catch (error: any) {
         console.log('Error :', error);
@@ -35,7 +35,7 @@ const Home = () => {
   // so we have to pass two things
   // 2. Data of all course: so that we extract course_name , Quizzes, QNA
   // 3. Title of practice: so that it can be dynamic component
-  // console.log('Coures :', JSON.stringify(courses, null, 3));
+  console.log('Coures :', JSON.stringify(courses, null, 3));
   return (
     <ScrollView>
       {/* What is flatlist ? whatever the array has 
@@ -50,6 +50,7 @@ const Home = () => {
         <Feather name="settings" size={24} color="black" />
       </View>
 
+
       {/*Container for practice section */}
       <View>
         <Text>Practice</Text>
@@ -58,10 +59,15 @@ const Home = () => {
             //  courses?.documents[0].chaptersQna appan 
             // yu naa send kar sakte cause by that only 0th course will be sent
             // so we have to send each course data 
-            practiceData={courses?.documents}
+            allData = {courses?.documents}
+            practiceData={courses?.documents[0].chaptersQna}
+            screenName = {"/qna-screen"}
             title={'QnA'}
           />
-          <PracticeCard practiceData={courses?.documents} title={'Quizzes'} />
+          <PracticeCard practiceData={courses?.documents} title={'Quizzes'}
+           screenName = {"/flashcard-screen"}
+            allData = {courses?.documents}
+          />
           <PracticeCard practiceData={courses?.documents} title={'Flashcards'} />
         </View>
       </View>

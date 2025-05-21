@@ -8,36 +8,45 @@ import { FlatList } from 'react-native-gesture-handler'
 // so it will work for Qna , Quizzes and Flashcards   
 
 const PracticeList = () => {
-  const {data, title,courseTitle} = useLocalSearchParams()
-  // console.log("Params :",JSON.stringify(data, null, 3) );
-  const categoryData = JSON.parse(data)
-  // console.log("courseTitle",courseTitle[0]);
+  const {practiceData } = useLocalSearchParams()
+// console.log("Number :", typeof JSON.parse(number));
+
+  // you passed data in json strinfgy so we have to parsed 
+  // Actually this JSON.parse convert the strinifgy to actual value 
+  // for example we conveted array in strinfgy then this json.parse 
+  // will convert it bact to actual data type that is array
+
+  const parsedPracticeData = JSON.parse(practiceData)
   
-  // console.log("Params :",JSON.parse(data));
   
-  //  data?.map((item)=> (
-  //   console.log("dat",item)
-  //  ))
-  // console.log("HEllo :",courseTitle[0]);
-  
-  // console.log("Tile :",JSON.stringify(courseTitle[0]?.course_name, null, 3));
-  
+ 
+  // 011
   return (
     <View className='bg-green-500 flex-1 flex-row justify-center items-center'>
       {/* <Text>{title}</Text> */}
 
-      {/* <Text>{courseTitle}</Text> */}
-      
+
+      {/* what does Flatlist do: whatever the indexs an array has it will iterate on each
+      then it will give that data 
+      // for example 
+      // 1. [{}, {}],
+      // 2.["Tausif", 3]
+
+      // by Flatlist will give: 
+      // 1. {} then {}
+      // 2. "Tausif" then 3
+       */}
+
       <FlatList 
-      data={courseTitle}
+      data={parsedPracticeData}
       renderItem={({item}) => {
-        // console.log("Item of courseTitle from practice-Flashlist :",item);
+        // console.log("item from practice-list :",JSON.stringify(item, null, 3));
         
         return(
           // you need to write here course title
           <View>
-            {/* <Text>item</Text> */}
-      </View>
+            <Text>{item?.course_name}</Text>
+        </View>
         )
       }}
       />

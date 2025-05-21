@@ -5,11 +5,11 @@ import { router } from 'expo-router';
 interface propsType {
 title: string;
 practiceData: object;
-courseTitle: string;
+
 }
-const PracticeCard = ({title, practiceData,courseTitle}:propsType) => {
+const PracticeCard = ({title,practiceData}:propsType) => {
   // console.log("datdata);
-  // console.log("Data :",data);
+  // console.log("practiceData :", JSON.stringify(practiceData, null, 2));
   
   return (
     //  Practice
@@ -19,11 +19,10 @@ const PracticeCard = ({title, practiceData,courseTitle}:propsType) => {
       <TouchableOpacity
       onPress={() =>router.push({
         pathname: '/(protected)/practice-list',
-       params: {title,
+       params: {
         // for some reason you can't pass data directly ? Why ? you have to pass it 
         // as string then later uou want to use convert in ojbect
-        data:JSON.stringify(data),
-       courseTitle: JSON.stringify(courseTitle)
+        practiceData:JSON.stringify(practiceData),
        },
        
       })}

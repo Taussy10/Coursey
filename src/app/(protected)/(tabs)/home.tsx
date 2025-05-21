@@ -6,6 +6,7 @@ import { useEffect, useState } from 'react';
 import { fetchCourse } from '~/src/appwrite/appwrite';
 import PracticeCard from '~/src/components/home/practice-card';
 import { ScrollView } from 'react-native-gesture-handler';
+import CouresList from '~/src/components/home/courses-list';
 
 const Home = () => {
   const { loggedIn, user, loading } = useAuthContext();
@@ -35,7 +36,9 @@ const Home = () => {
   // so we have to pass two things
   // 2. Data of all course: so that we extract course_name , Quizzes, QNA
   // 3. Title of practice: so that it can be dynamic component
-  console.log('Coures :', JSON.stringify(courses, null, 3));
+  // console.log('Coures :', JSON.stringify(courses, null, 3));
+            // console.log("Chapters, :" ,courses?.documents[0]);
+
   return (
     <ScrollView>
       {/* What is flatlist ? whatever the array has 
@@ -71,6 +74,10 @@ const Home = () => {
           <PracticeCard practiceData={courses?.documents} title={'Flashcards'} />
         </View>
       </View>
+
+
+      {/* For courses List */}
+      <CouresList data={courses?.documents} />
     </ScrollView>
   );
 };

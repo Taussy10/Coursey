@@ -7,6 +7,7 @@ export default function ProtectedLayout() {
       do this will move to initial screen which is home  */}
       <Stack.Screen name="(tabs)"/>
       <Stack.Screen name="practice-list"/>
+      <Stack.Screen name="course-details"/>
     </Stack>
   );
 }

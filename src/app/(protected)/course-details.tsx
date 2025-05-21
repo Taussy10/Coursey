@@ -3,6 +3,7 @@ import React from 'react';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useLocalSearchParams } from 'expo-router';
 import Entypo from '@expo/vector-icons/Entypo';
+import EmptyScreen from '~/src/components/empty-screen';
 const CourseDetails = () => {
   // you have destructure when there are two many elements
   //  and you don't want to get them dot method 
@@ -22,10 +23,11 @@ const CourseDetails = () => {
 
       {/* For course chapters */}
       <FlatList
+      ListEmptyComponent={<EmptyScreen title={"There are no chapters in this screen"}/>}
         data={parsedCourseData.chapters}
         renderItem={({ item, index }) => {
           // console.log('item from courseDetails screen', item?.chapters?.length);
-
+          
           return (
             // container
             <View>

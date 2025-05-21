@@ -1,13 +1,12 @@
 import { View, Text, FlatList, TouchableOpacity } from 'react-native';
 import React from 'react';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { useLocalSearchParams } from 'expo-router';
+import { router, useLocalSearchParams } from 'expo-router';
 import Entypo from '@expo/vector-icons/Entypo';
 import EmptyScreen from '~/src/components/empty-screen';
 const CourseDetails = () => {
-  // you have destructure when there are two many elements
-  //  and you don't want to get them dot method 
-  const { item } = useLocalSearchParams();
+  // to get the params you have to destructure it  
+  const {item } = useLocalSearchParams();
   
   // console.log(JSON.stringify(item, null, 3));
   const parsedCourseData = JSON.parse(item);
@@ -32,6 +31,10 @@ const CourseDetails = () => {
             // container
             <View>
               <TouchableOpacity
+              onPress={() => router.push({
+                pathname: '/course-content',
+                params: {item: JSON.stringify(item)}
+              })}
                 className="mb-4  flex-row items-center justify-between rounded-2xl 
              border p-3">
                 <View className=" flex-row gap-2">

@@ -24,15 +24,19 @@ const Home = () => {
     };
     fetchAllCourse();
   }, []);
-  console.log('Couress :', courses?.documents);
+  console.log('Couress :', JSON.stringify(courses?.documents, null, 3));
 
   return (
     <View>
       <FlatList
         data={courses?.documents}
         renderItem={({ item }) => {
+          // console.log("Quiz :",item?.course_name);
+          const courseTitle = item?.course_name
+          // console.log("titel ",typeof courseTitle);
+          
           return (
-            <View>
+            <View className=' '>
               <View className=" mb-6 gap-4 ">
                 <Text>Home</Text>
                 <Button title="Create a course" onPress={() => router.push('/create-course')} />
@@ -41,9 +45,9 @@ const Home = () => {
                 <Feather name="settings" size={24} color="black" />
                 <Text>Practice</Text>
                 <View className=" flex-row items-center justify-center gap-4 ">
-                  <PracticeCard quizes={item?.chaptersQuizzes} />
-                  <PracticeCard flashcards={item?.flashcards} />
-                  <PracticeCard qna={item?.chaptersQna} />
+                  <PracticeCard data={item?.chaptersQuizzes} title= {"Quizzes"} courseTitle={courseTitle} />
+                  <PracticeCard data={item?.flashcards} title= {"Flashcards"} courseTitle={courseTitle}/>
+                  <PracticeCard data={item?.chaptersQna} title= {"QnA"} courseTitle={courseTitle}/>
                 </View>
               </View>
             </View>

@@ -40,16 +40,17 @@ Roboto_700Bold,
 
     <GestureHandlerRootView>
       <AuthProvider>
+        {/* I don't need currently this will take when I need that  */}
       {/* you don't need to use safe area view everywhere just 
       wrap whole app with safe area provider then by safea area view  */}
       {/* provider cause we want to show infomration all over the app  */}
-      <SafeAreaProvider>
-        <SafeAreaView className=' flex-1 px-4'>
+      {/* <SafeAreaProvider>
+        <SafeAreaView className=' flex-1 px-4'> */}
         <Stack screenOptions={{ headerShown: false }}>
           <Stack.Screen name="index" />
         </Stack>
-        </SafeAreaView>
-      </SafeAreaProvider>
+        {/* </SafeAreaView>
+      </SafeAreaProvider> */}
       </AuthProvider>
     </GestureHandlerRootView>
   );

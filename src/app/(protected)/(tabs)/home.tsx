@@ -5,6 +5,7 @@ import { router } from 'expo-router';
 import { useEffect, useState } from 'react';
 import { fetchCourse } from '~/src/appwrite/appwrite';
 import PracticeCard from '~/src/components/home/practice-card';
+import { ScrollView } from 'react-native-gesture-handler';
 
 const Home = () => {
   const { loggedIn, user, loading } = useAuthContext();
@@ -24,37 +25,64 @@ const Home = () => {
     };
     fetchAllCourse();
   }, []);
-  console.log('Couress :', JSON.stringify(courses?.documents, null, 3));
+  // We got the data now what to with data ? 
+  // in component of practice-card 
+  // I want to show ? nothing from that 
+  // just Text of Practice name: for example Quiz 
+  // But if user click any practice card then it should 
+  // practice-list screen where he will se component of each course 
+  // that will have course name 
+  // so we have to pass two things 
+  // 1. Course Name 
+  // 2. Data of practice(for example quiz)
+  // 3. Title of practice: so that it can be dynamic component
+  console.log('Coures :', JSON.stringify(courses, null, 3));
+
+  // const courseTitle = courses?.documents[0].course_name;
+  const courseTitle = courses?.documents;
+  // console.log('Title', courseTitle);
 
   return (
-    <View>
-      <FlatList
-        data={courses?.documents}
-        renderItem={({ item }) => {
-          // console.log("Quiz :",item?.course_name);
-          const courseTitle = item?.course_name
-          // console.log("titel ",typeof courseTitle);
-          
-          return (
-            <View className=' '>
-              <View className=" mb-6 gap-4 ">
-                <Text>Home</Text>
-                <Button title="Create a course" onPress={() => router.push('/create-course')} />
-                <Button title="Explore existing courses" />
+    <ScrollView>
+      {/* What is flatlist ? whatever the array has 
+      index will iterate and show so here array is course that has 2 course 
+      so , the data will iterate tw times so that whatever in flatist is will written two times */}
 
-                <Feather name="settings" size={24} color="black" />
-                <Text>Practice</Text>
-                <View className=" flex-row items-center justify-center gap-4 ">
-                  <PracticeCard data={item?.chaptersQuizzes} title= {"Quizzes"} courseTitle={courseTitle} />
-                  <PracticeCard data={item?.flashcards} title= {"Flashcards"} courseTitle={courseTitle}/>
-                  <PracticeCard data={item?.chaptersQna} title= {"QnA"} courseTitle={courseTitle}/>
-                </View>
-              </View>
-            </View>
-          );
-        }}
-      />
-    </View>
+      {/* Containe for buttons */}
+      <View className=" mb-6 gap-4 ">
+        <Text>Home</Text>
+        <Button title="Create a course" onPress={() => router.push('/create-course')} />
+        <Button title="Explore existing courses" />
+        <Feather name="settings" size={24} color="black" />
+      </View>
+
+      {/*Container for practice section */}
+      <View>
+        <Text>Practice</Text>
+        <View className=" flex-row items-center justify-center gap-4 ">
+        
+           <PracticeCard
+            //  courses?.documents[0].chaptersQna appan yu naa send kar sakte cause by that only 0th course will be sent 
+            // practiceData={courses?.documents[0].chaptersQna} 
+            practiceData={courses?.documents}
+            title={'QnA'}
+            courseTitle={courseTitle}
+          />
+          <PracticeCard  
+            practiceData={courses?.documents[0].chaptersQuizzes}
+            title={'Quizzes'}
+            courseTitle={courseTitle}
+          />
+          <PracticeCard
+            practiceData={courses?.documents[0].flashcards}
+            title={'Flashcards'}
+            courseTitle={courseTitle}
+          />
+         
+        </View>
+      </View>
+
+    </ScrollView>
   );
 };
 

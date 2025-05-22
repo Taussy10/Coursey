@@ -10,7 +10,7 @@ const CourseDetails = () => {
   
   // console.log(JSON.stringify(item, null, 3));
   const parsedCourseData = JSON.parse(item);
-  console.log('CourseData from course-details.tsx', JSON.stringify(parsedCourseData, null, 4));
+  // console.log('CourseData from course-details.tsx', JSON.stringify(parsedCourseData, null, 4));
 
   return (
     <SafeAreaView className=" flex-1 p-4">
@@ -32,8 +32,8 @@ const CourseDetails = () => {
             <View>
               <TouchableOpacity
               onPress={() => router.push({
-                pathname: '/course-content',
-                params: {item: JSON.stringify(item)}
+                pathname: '/course-chapter-content',
+                params: {item: JSON.stringify(item.chapter_content)}
               })}
                 className="mb-4  flex-row items-center justify-between rounded-2xl 
              border p-3">

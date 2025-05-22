@@ -37,7 +37,7 @@ const Home = () => {
   // 2. Data of all course: so that we extract course_name , Quizzes, QNA
   // 3. Title of practice: so that it can be dynamic component
   // console.log('Coures :', JSON.stringify(courses, null, 3));
-            // console.log("Chapters, :" ,courses?.documents[0]);
+  // console.log("Chapters, :" ,courses?.documents[0]);
 
   return (
     <ScrollView>
@@ -53,28 +53,28 @@ const Home = () => {
         <Feather name="settings" size={24} color="black" />
       </View>
 
-
       {/*Container for practice section */}
       <View>
         <Text>Practice</Text>
         <View className=" flex-row items-center justify-center gap-4 ">
           <PracticeCard
-            //  courses?.documents[0].chaptersQna appan 
+            //  courses?.documents[0].chaptersQna appan
             // yu naa send kar sakte cause by that only 0th course will be sent
-            // so we have to send each course data 
-            allData = {courses?.documents}
+            // so we have to send each course data
+            allData={courses?.documents}
             practiceData={courses?.documents[0].chaptersQna}
-            screenName = {"/qna-screen"}
+            screenName={'/qna-screen'}
             title={'QnA'}
           />
-          <PracticeCard practiceData={courses?.documents} title={'Quizzes'}
-           screenName = {"/flashcard-screen"}
-            allData = {courses?.documents}
+          <PracticeCard
+            practiceData={courses?.documents}
+            title={'Quizzes'}
+            screenName={'/flashcard-screen'}
+            allData={courses?.documents}
           />
           <PracticeCard practiceData={courses?.documents} title={'Flashcards'} />
         </View>
       </View>
-
 
       {/* For courses List */}
       <CouresList data={courses?.documents} />

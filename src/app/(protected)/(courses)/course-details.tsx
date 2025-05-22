@@ -15,11 +15,14 @@ const CourseDetails = () => {
   return (
     <SafeAreaView className=" flex-1 p-4">
       <Text>CourseDetails Screen</Text>
+      <View className=' flex-row  gap-2 mb-4'>
+        <Entypo name= 'book' size={24} color={"blue"}/>
+      <Text>{parsedCourseData?.chapters?.length} Chpaters</Text>
+      </View>
       {/* <Text>{parsedCourseData?.course_name}</Text> */}
       {/* <Text
       className=' font-roboto-semibold'
       >{parsedCourseData?.description}</Text> */}
-
       {/* For course chapters */}
       <FlatList
       ListEmptyComponent={<EmptyScreen title={"There are no chapters in this screen"}/>}

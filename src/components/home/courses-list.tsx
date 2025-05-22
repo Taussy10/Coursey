@@ -13,11 +13,7 @@ const CouresList = ({ data }: { data: string }) => {
       horizontal
         data={data}
         renderItem={({item, index}) => {
-        //   console.log('CouresList :',JSON.stringify(item, null, 3));
-        // how can you implemnet chapter lenght for each course and let 
-        // me tell each courese will have diffrent length
-          console.log("Chapters, :" ,item?.chapters?.length);
-          
+   
           return (
             <TouchableOpacity
             // onPress={() => router.push('/course-details')}

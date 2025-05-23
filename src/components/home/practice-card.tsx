@@ -9,7 +9,7 @@ practiceData: object;
 }
 const PracticeCard = ({title,practiceData,allData, screenName}:propsType) => {
   // console.log("datdata);
-  // console.log("practiceData :", JSON.stringify(practiceData, null, 2));
+  // console.log("practiceData from practice-card.tsx :", JSON.stringify(practiceData, null, 2));
   
   return (
     //  Practice

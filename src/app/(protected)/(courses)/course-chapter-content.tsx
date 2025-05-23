@@ -1,9 +1,9 @@
-import { View, Text, FlatList } from 'react-native'
+import { View, Text, FlatList, Button } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context'
-import { useLocalSearchParams } from 'expo-router'
+import { router, useLocalSearchParams } from 'expo-router'
 import * as Progress from 'react-native-progress';
 import { useState } from 'react';
-import { parse } from '@babel/core';
+
 
 const CourseChapterContent = () => {
     const {item} = useLocalSearchParams()
@@ -15,8 +15,9 @@ const CourseChapterContent = () => {
     
     const parsedItem = JSON.parse(item)
     // console.log("ChpaterContent :",parsedItem);
+    // so this is an array that has some object based on index
     console.log("Each chapter content from course-chapter-content/tsx :",JSON.stringify(parsedItem, null, 4));
-// console.log(parsedItem.length);
+console.log("Number of quizzes :",parsedItem.length);
 
     // created a function for tracking progress 
     // and passed a prams called current page 
@@ -24,9 +25,24 @@ const CourseChapterContent = () => {
       // now need to calculate: percentage 
       // we are not multiplying by 100 cause we want value between 0 to 1
       const percentage = (currentPage/parsedItem.length) 
+      // setCurrentPage(currentPage +0)
       // why are we returing ? go in kinder garden for that to know  
+      console.log("Percengate :",percentage);
+      
       return percentage
     }
+  // const onPushScreen = (currentPage,parsedItem) => {
+  //       return (
+  //         <View>
+      
+  //         </View>
+  //       )
+  //   } 
+  const onCompeleteCourse = () => {
+    // setCurrentPage(parsedItem.length)
+    // console.log("Hello")
+  } 
+  
   return (
     <SafeAreaView
     className=" flex-1 p-4">
@@ -39,26 +55,52 @@ const CourseChapterContent = () => {
 
       <Text>CourseChapterContent</Text>
       {/* based on the current page we are rendering*/}
+     
+     {/* <onPushScreen currentPage={currentPage} parsedItem={parsedItem} /> */}
+    
 
        <Text>{parsedItem[currentPage].topic}</Text>
-       <Text>{parsedItem[currentPage].description}</Text>
-       <View className=' bg-black p-2 flex-row items-center gap-2'>
-       <Text className=' text-white'>Example</Text>
-       <Text className=' text-white'>{parsedItem[currentPage].example}</Text>
-       </View>
+       <Text>{parsedItem[currentPage].description}</Text>   
+     
+       {/* <View className=' bg-gray-300 p-4 rounded-xl flex-row items-center gap-2'>
+      
+       <Text className='  text-black text-base font-roboto-semibold'>{parsedItem[currentPage].codeExample}</Text>
+       </View> */}
 
-       {/*   <FlatList 
-        data={parsedItem}
-        renderItem={({item}) => {
-            return(
-                // container
-        <View>
-            <Text>{item.topic}</Text>
-           <Text>{item.description}</Text>
-        </View>
-            )
-        }}
-        /> */}
+{
+  currentPage< parsedItem.length -1? (
+<Button 
+title='Next'
+// in starting 
+// Firstly by default 0th index will be shown then 
+// current page = 0 and parsed item = 2 -1 = 1 
+// so it will move to 2nd index will show  index == 1  
+// chunki we had only 2 index so it will work 
+// then: currentScreen = 1 then 1-1 = 0 so 
+// it will move to roouter.push  
+
+onPress={() => {if (currentPage< parsedItem.length -1) {
+ setCurrentPage(currentPage+1) 
+} 
+}
+}
+/>
+  ):(
+    <Button 
+title='Finish'
+// in starting 
+// Firstly by default 0th index will be shown then 
+// current page = 0 and parsed item = 2 -1 = 1 
+// so it will move to 2nd index will show  index == 1  
+// chunki we had only 2 index so it will work 
+// then: currentScreen = 1 then 1-1 = 0 so 
+// it will move to roouter.push  
+
+onPress={() => onCompeleteCourse() }
+/>
+  )
+}
+
     </SafeAreaView>
   )
 }

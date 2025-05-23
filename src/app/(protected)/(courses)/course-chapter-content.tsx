@@ -9,14 +9,14 @@ const CourseChapterContent = () => {
     const {item} = useLocalSearchParams()
     // current page is currently 0
     // based on chaing current page item will render in this screen
-    const [currentPage, setCurrentPage] = useState(1)
+    const [currentPage, setCurrentPage] = useState(0)
     // console.log("ehllo :",item);
     // console.log(item.chapter_content[0]?.topic);
     
     const parsedItem = JSON.parse(item)
     // console.log("ChpaterContent :",parsedItem);
-    console.log("Each chapter content :",JSON.stringify(parsedItem, null, 4));
-console.log(parsedItem.length);
+    console.log("Each chapter content from course-chapter-content/tsx :",JSON.stringify(parsedItem, null, 4));
+// console.log(parsedItem.length);
 
     // created a function for tracking progress 
     // and passed a prams called current page 
@@ -41,6 +41,11 @@ console.log(parsedItem.length);
       {/* based on the current page we are rendering*/}
 
        <Text>{parsedItem[currentPage].topic}</Text>
+       <Text>{parsedItem[currentPage].description}</Text>
+       <View className=' bg-black p-2 flex-row items-center gap-2'>
+       <Text className=' text-white'>Example</Text>
+       <Text className=' text-white'>{parsedItem[currentPage].example}</Text>
+       </View>
 
        {/*   <FlatList 
         data={parsedItem}

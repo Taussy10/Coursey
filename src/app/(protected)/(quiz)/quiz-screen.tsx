@@ -1,12 +1,15 @@
 import { View, Text, Button, TouchableOpacity } from 'react-native';
 import { useState } from 'react';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { useLocalSearchParams } from 'expo-router';
+import { router, useLocalSearchParams } from 'expo-router';
 
 const QuizScreen = () => {
   const { courseData } = useLocalSearchParams();
   const [currentquiz, setCurrentQuiz] = useState(0);
   const [selectedQuiz, setSelectedQuiz] = useState();
+  // store for storing all the results
+  const [quizResults, setQuizResults] = useState([]);
+
   // console.log("all the data",data);
   // so we got each courseData
   const parsedPracticeData = JSON.parse(courseData);
@@ -16,7 +19,31 @@ const QuizScreen = () => {
   const onCompeletingQuiz = () => {
     setCurrentQuiz((prev) => prev + 1);
     setSelectedQuiz(undefined); // ✅ Yeh important hai
+
+    const currentQuestion = parsedPracticeData.chaptersQuizzes[currentquiz];
+    const isCorrectAns = selectedQuiz === currentQuestion?.answer;
+
+    // these are the things we want to store
+    const result = {
+      question: currentQuestion?.question,
+      correctAnswer: currentQuestion?.answer,
+      userAnswer: selectedQuiz,
+    };
+    // then add in database
+    setQuizResults((prev) => [...prev, result]);
+    if (currentquiz + 1 >= parsedPracticeData?.chaptersQuizzes.length) {
+      router.push({
+        pathname: '/quiz-summary',
+        params: { quizResults: JSON.stringify([...quizResults, result]) },
+      });
+    } else {
+      // setQuizResults((prev) => [...prev, result]);
+      // setCurrentQuiz((prev) => prev + 1);
+      // setSelectedQuiz(undefined);
+    }
   };
+
+  // evalualting the answer weither it's right or not
 
   console.log('selectedQuiz :', selectedQuiz);
 
@@ -33,6 +60,7 @@ const QuizScreen = () => {
           <View>
             <Text>{parsedPracticeData?.chaptersQuizzes[currentquiz]?.question}</Text>
             <Text>{parsedPracticeData?.chaptersQuizzes[currentquiz]?.answer}</Text>
+
             {parsedPracticeData?.chaptersQuizzes[currentquiz]?.option.map((item, index) => {
               return (
                 // Just a container

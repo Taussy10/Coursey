@@ -20,6 +20,7 @@ if (loading) {
 }
   if (loggedIn && user) {
     return <Redirect href={"/home"} />;
+    // return <Redirect href={"/quiz-summary"} />;
   }
 
   // This fun will login the user

@@ -6,7 +6,7 @@ import { router, useLocalSearchParams } from 'expo-router';
 const QuizScreen = () => {
   const { courseData } = useLocalSearchParams();
   const [currentquiz, setCurrentQuiz] = useState(0);
-  const [selectedQuiz, setSelectedQuiz] = useState();
+  const [selectedOption, setselectedOption] = useState();
   // store for storing all the results
   const [quizResults, setQuizResults] = useState([]);
 
@@ -18,16 +18,16 @@ const QuizScreen = () => {
 
   const onCompeletingQuiz = () => {
     setCurrentQuiz((prev) => prev + 1);
-    setSelectedQuiz(undefined); // ✅ Yeh important hai
+    setselectedOption(undefined); // ✅ Yeh important hai
 
     const currentQuestion = parsedPracticeData.chaptersQuizzes[currentquiz];
-    const isCorrectAns = selectedQuiz === currentQuestion?.answer;
+    const isCorrectAns = selectedOption === currentQuestion?.answer;
 
     // these are the things we want to store
     const result = {
       question: currentQuestion?.question,
       correctAnswer: currentQuestion?.answer,
-      userAnswer: selectedQuiz,
+      userAnswer: selectedOption,
     };
     // then add in database
     setQuizResults((prev) => [...prev, result]);
@@ -39,13 +39,13 @@ const QuizScreen = () => {
     } else {
       // setQuizResults((prev) => [...prev, result]);
       // setCurrentQuiz((prev) => prev + 1);
-      // setSelectedQuiz(undefined);
+      // setselectedOption(undefined);
     }
   };
 
   // evalualting the answer weither it's right or not
 
-  console.log('selectedQuiz :', selectedQuiz);
+  console.log('selectedOption :', selectedOption);
 
   // console.log('QuizData :', parsedPracticeData?.chaptersQuizzes[0]);
 
@@ -70,15 +70,15 @@ const QuizScreen = () => {
                   <TouchableOpacity
                     // when you press on item contains iti's value by onpress you can
                     onPress={
-                      () => setSelectedQuiz(item)
+                      () => setselectedOption(item)
                       // console.log("currentItem :",item)
                     }
-                    // className={`m-2 rounded-xl border p-3 ${selectedQuiz === item ? 'bg-green-500' : 'bg-white'}`}
+                    // className={`m-2 rounded-xl border p-3 ${selectedOption === item ? 'bg-green-500' : 'bg-white'}`}
                     // The issue was I was just checking is slectedItem is truthy? yeah cause intially
                     //  is undefined whic is falsey value but when you select it stores let's def then
                     // it's truthy so it will bg-green
                     // Now it will bg-green only when selecteItem(selected by user by tapping) === storedItem(stored in usestate of Setselected) is truthy value
-                    className={`m-2 rounded-xl border p-3 ${selectedQuiz === item ? 'bg-green-500' : 'bg-white'}`}>
+                    className={`m-2 rounded-xl border p-3 ${selectedOption === item ? 'bg-green-500' : 'bg-white'}`}>
                     <Text className="font-roboto-semibold text-base">{item}</Text>
                   </TouchableOpacity>
                 </View>

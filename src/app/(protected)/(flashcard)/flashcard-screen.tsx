@@ -19,25 +19,25 @@ const FlashcardScreen = () => {
 
   // console.log("CourseData from flashcard-screen :",JSON.stringify(parsedPracticeData,null, 4));
   //  parsedPracticeData?.flashcards[0]?.front === null||undefined ?console.log("hello"):console.log("hnothing");
-  console.log("undefined :",parsedPracticeData?.flashcards.length);
-  
-   
-   
+  console.log('undefined :', parsedPracticeData?.flashcards.length);
+
   return (
     <SafeAreaView>
       <Text>QnaScreen</Text>
       {
         // parsedPracticeData?.flashcards[0]?.front !== null||undefined ? (
-        parsedPracticeData?.flashcards.length >0 ? (
+        parsedPracticeData?.flashcards?.length > 0 ? (
           <View>
-  <Text>{parsedPracticeData?.flashcards[currentFlashcard]?.front}</Text>
-      <Text>{parsedPracticeData?.flashcards[currentFlashcard]?.back}</Text>
+            <Text>{parsedPracticeData?.flashcards[currentFlashcard]?.front}</Text>
+            <Text>{parsedPracticeData?.flashcards[currentFlashcard]?.back}</Text>
           </View>
-        ): (<Text className=' text-xl'>THere are no flashcards</Text>)
+        ) : (
+          <Text className=" text-xl">There are no flashcards</Text>
+        )
       }
 
       {/* if there are enough cards then show otherwise don't move */}
-      
+
       {/* 
       {
     

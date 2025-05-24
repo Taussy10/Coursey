@@ -5,16 +5,17 @@ import { FlatList } from 'react-native-gesture-handler';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 const PracticeList = () => {
-  const { allData,screenName } = useLocalSearchParams();
+  const { allData, screenName, practiceData } = useLocalSearchParams();
 
   // you passed data in json strinfgy so we have to parsed
   // Actually this JSON.parse convert the strinifgy to actual value
   // for example we conveted array in strinfgy then this json.parse
   // will convert it bact to actual data type that is array
   // You can try it by passing number as stringy then prase it
-console.log("ScreenName :",screenName);
+  // console.log('ScreenName :', screenName);
 
   const parsedPracticeData = JSON.parse(allData);
+  // console.log("Phe ::",parsedPracticeData);
 
   // 011
   return (
@@ -39,7 +40,16 @@ console.log("ScreenName :",screenName);
           return (
             // you need to write here course title
             <TouchableOpacity
-            onPress={() => router.push(screenName)}
+              onPress={() =>
+                router.push({
+                  pathname: screenName,
+                  params: {
+                    data: JSON.stringify(allData),
+                    practiceData: JSON.stringify(practiceData),
+                    courseData: JSON.stringify(item),
+                  },
+                })
+              }
               style={{
                 width: 100,
                 height: 200,

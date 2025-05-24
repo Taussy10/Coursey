@@ -23,6 +23,7 @@ const PracticeCard = ({title,practiceData,allData, screenName}:propsType) => {
         // for some reason you can't pass data directly ? Why ? you have to pass it 
         // as string then later uou want to use convert in ojbect
         allData:JSON.stringify(allData),
+        practiceData:JSON.stringify(practiceData),
         screenName:screenName
        },
        

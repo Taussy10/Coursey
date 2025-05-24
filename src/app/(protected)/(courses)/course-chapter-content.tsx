@@ -39,6 +39,13 @@ console.log("Number of quizzes :",parsedItem.length);
   //       )
   //   } 
   const onCompeleteCourse = () => {
+    // have to write logic of when user compeletes 
+    // the chapter then store it in database then show that user has this chapter 
+    // are we gonna use local storegae or remote storae will see later
+//  In video he talk about 3:30 to 3:35 (hr:mins)
+
+// Add here when course is compeleted 
+router.back()
     // setCurrentPage(parsedItem.length)
     // console.log("Hello")
   } 

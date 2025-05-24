@@ -40,7 +40,9 @@ const Home = () => {
   // console.log("Chapters, :" ,courses?.documents[0]);
 
   return (
-    <ScrollView>
+    <ScrollView
+    // refreshControl={}
+    >
       {/* What is flatlist ? whatever the array has 
       index will iterate and show so here array is course that has 2 course 
       so , the data will iterate tw times so that whatever in flatist is will written two times */}
@@ -69,10 +71,18 @@ const Home = () => {
           <PracticeCard
             practiceData={courses?.documents}
             title={'Quizzes'}
-            screenName={'/flashcard-screen'}
+            screenName={'/quiz-screen'}
             allData={courses?.documents}
           />
-          <PracticeCard practiceData={courses?.documents} title={'Flashcards'} />
+           <PracticeCard
+            practiceData={courses?.documents}
+          title={'Flashcard'}
+          screenName={'/flashcard-screen'}
+            allData={courses?.documents}
+          />
+         
+          
+          
         </View>
       </View>
 
